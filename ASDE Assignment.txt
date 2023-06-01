@@ -1,0 +1,47 @@
+﻿Task 1: SQL
+
+
+select d.Name as "DEPT_NAME",avg(s.AMT) as "AVG_MONTHLY_SALARY" from employees as e join departments as d 
+on e.DEPT_ID=d.id
+join salaries as s on s.EMP_ID=e.id
+group by d.NAME
+order by avg(s.AMT) desc limit 3;
+
+	
+
+
+
+Task 2: Scripting
+
+import pandas as pd
+departments=pd.read_csv("C:/Users/Dhananjay/Desktop/assignment/Departments.csv")
+employees=pd.read_csv("C:/Users/Dhananjay/Desktop/assignment/Employees.csv")
+salaries=pd.read_csv("C:/Users/Dhananjay/Desktop/assignment/Salaries.csv")
+df=pd.merge(departments,employees, left_on='ID',right_on='DEPT_ID')
+data= pd.merge(df,salaries,left_on="ID_y",right_on='EMP_ID')
+data
+x=data.groupby(['NAME_x'])['AMT'].mean()
+x.sort_values(ascending=False).head(3)
+
+
+
+
+
+
+Task 3: Debugging(Python)
+
+def compute(n):
+   if n < 10:
+       out = n ** 2
+   elif n < 20:
+       out = 1
+       for i in range(1, n-9):
+           out *= i
+   else:
+       lim = n - 19
+       out = lim * lim
+       out = out - lim
+       out = out / 2
+   print(out)
+n = int(input("Enter an integer: "))
+compute(n)
